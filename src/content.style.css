@@ -1,0 +1,167 @@
+#orbit-main-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Gap handled by margins for animation smoothness */
+  z-index: 2147483647;
+}
+
+.orbit-main-icon {
+  width: 44px; /* Slightly larger */
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.2s ease;
+  font-weight: 800;
+  font-family: sans-serif;
+  font-size: 14px;
+  user-select: none;
+  border: 2px solid white; /* Clean border */
+}
+
+.orbit-main-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.5);
+}
+
+.orbit-sub-menu {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  gap: 15px; /* Spacing between icons */
+  margin-top: 15px; /* Spacing from main icon */
+  overflow: visible; /* Allow shadows to show */
+  transition: opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  transform: translateY(-10px) scale(0.8);
+  pointer-events: none;
+  visibility: hidden; /* Ensure it doesn't block clicks when hidden */
+  position: absolute;
+  top: 100%; /* Position below main icon */
+}
+
+.orbit-sub-menu.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.orbit-sub-icon {
+  width: 48px; /* Larger icons */
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 22px; /* Larger emoji/icon */
+  user-select: none;
+  background-color: white;
+  border: 1px solid #eee;
+}
+
+.orbit-sub-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Icon Style */
+.orbit-sub-icon.search {
+  color: #4285f4; /* Google Blue */
+}
+.orbit-sub-icon.search::before {
+  content: "🔍";
+}
+
+/* Translate Icon Style */
+.orbit-sub-icon.translate {
+  color: #8e44ad; /* Gemini Purple */
+  /* Gradient background for translate could be nice too */
+}
+.orbit-sub-icon.translate::before {
+  content: "✨"; /* Sparkles for AI/Gemini */
+}
+
+/* Tooltip styles */
+.orbit-tooltip {
+  position: absolute;
+  background-color: #ffffff;
+  color: #333;
+  padding: 16px;
+  border-radius: 12px; /* Rounder corners */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-width: 320px;
+  max-width: 550px;
+  width: max-content;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Softer, larger shadow */
+  border: 1px solid #f0f0f0;
+  z-index: 2147483647;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  top: 60px; /* Adjusted for larger main icon */
+  left: 0;
+}
+
+.orbit-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#orbit-tooltip-content {
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+
+.orbit-tooltip-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.orbit-tooltip-button {
+  background-color: white;
+  color: #555;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.orbit-tooltip-button:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+  color: #333;
+}
+
+#orbit-copy-button {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+#orbit-copy-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

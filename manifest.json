@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Orbit",
+  "version": "1.0",
+  "description": "Seamless Google AI Search and Gemini Translation for selected text.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "css": ["src/content.style.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/content.style.css", "options/options.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "options_page": "options/options.html"
+}
