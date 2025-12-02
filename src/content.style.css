@@ -8,8 +8,8 @@
 }
 
 .orbit-main-icon {
-  width: 44px; /* Slightly larger */
-  height: 44px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
@@ -22,7 +22,7 @@
     box-shadow 0.2s ease;
   font-weight: 800;
   font-family: sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   user-select: none;
   border: 2px solid white; /* Clean border */
 }
